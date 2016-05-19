@@ -27,13 +27,6 @@ export default Ember.Mixin.create({
         return Ember.HTMLBars.compile('{{yield}}{{#eb-table-content}}{{eb-table-header}}{{eb-table-body}}{{eb-table-footer}}{{/eb-table-content}}');
     }),
 
-    init: function() {
-        this._super();
-        if (!Ember.$) {
-            throw 'Missing dependency: jquery';
-        }
-    },
-
     setVisibleColumnCount: Ember.observer('columns', 'columns.[]', function() {
         var columns = get(this, 'columns');
         var count = 0;
