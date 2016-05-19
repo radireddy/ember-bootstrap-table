@@ -22,6 +22,7 @@ export default Ember.Mixin.create({
     borderedTable: true,
     nowrapTable: true,
     tableStriped: false,
+    rowSelectionHandler: null,
 
     layout: Ember.computed(function() {
         return Ember.HTMLBars.compile('{{yield}}{{#eb-table-content}}{{eb-table-header}}{{eb-table-body}}{{eb-table-footer}}{{/eb-table-content}}');
