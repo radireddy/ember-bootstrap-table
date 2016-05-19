@@ -1,2 +1,34 @@
+ <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Ember Bootstrap Table</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            {{#link-to 'table' tagName="li" href=false}}
+              {{#link-to 'table' bubbles=false}}
+                  In MemoryTable
+              {{/link-to}}
+            {{/link-to}}
+            {{#link-to 'remote-table' tagName="li" href=false}}
+              {{#link-to 'remote-table' bubbles=false}}
+                  Server Side Table
+              {{/link-to}}
+            {{/link-to}}
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
 
-{{outlet}}
+    <div class="container" style="padding-top: 50px;">
+
+      {{outlet}}
+
+    </div><!-- /.container -->
+
