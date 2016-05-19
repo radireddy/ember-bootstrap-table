@@ -26,7 +26,12 @@ Supports all features of Bootstrap Table with below additional features
 
 ## Instalation
 
-bower install ember-bootstrap-table --save
+* `ember install ember-bootstrap-table`
+* include ember template compiler in ember-cli-build.js
+
+    ```javascript
+    app.import('bower_components/ember/ember-template-compiler.js');
+    ```
 
 ## Developing or setting up this project on your computer
 
@@ -105,7 +110,7 @@ To create simple table, do following,
             });
             return [col1, col2, col3];
         })
-    };
+    });
     ```
 * Table looks like this
 
