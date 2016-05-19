@@ -21,7 +21,7 @@ Supports all features of Bootstrap Table with below additional features
 
 * Ember 2.5.0
 * Ember-cli 2.5.0
-* Twitter Bootstrap 3.3.4, only CSS
+* Twitter Bootstrap 3.3.6, only CSS
 
 
 ## Instalation
@@ -32,6 +32,7 @@ Supports all features of Bootstrap Table with below additional features
     ```javascript
     app.import('bower_components/ember/ember-template-compiler.js');
     ```
+* install bootstrap if you not yet installed `bower install bootstrap --save`
 
 ## Developing or setting up this project on your computer
 
