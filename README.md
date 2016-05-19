@@ -61,7 +61,7 @@ For more information on using ember-cli, visit [http://ember-cli.com/](http://em
 
 ## Usage
 
-To create simle table, do following,
+To create simple table, do following,
  * In your template use component as below
 
     ```html
