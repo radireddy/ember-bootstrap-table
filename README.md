@@ -158,3 +158,20 @@ All options mentioned above are applicable along with some additional options me
 | totalRecords | true | 0 | Positive integer, total number of records found in DB. Exact value is required for pagination to work properly. |
 | dataFetchHandler | true | null | JavaScript function, call back function. Table depends on this function to get data. Table calls this method when ever new data is required, on sorting, pagination, filteretc. It passes current page, page size, sort property, sort order and filter key as arguments. |
 
+## Table images
+
+![Alt text](/images/simple-table.png?raw=true)
+
+![Alt text](/images/navigationbar.png?raw=true)
+
+![Alt text](/images/table-stripped.png?raw=true)
+
+![Alt text](/images/column-sorting.png?raw=true)
+
+![Alt text](/images/column-hilight.png?raw=true)
+
+![Alt text](/images/cell-actions.png?raw=true)
+
+![Alt text](/images/row-hilight.png?raw=true)
+
+![Alt text](/images/multiple-row-selection.png?raw=true)
