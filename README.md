@@ -107,6 +107,10 @@ To create simple table, do following,
         })
     };
     ```
+* Table looks like this
+
+![Alt text](/images/simple-table.png?raw=true)
+
 
 ## Table Options
 
