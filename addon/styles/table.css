@@ -1,0 +1,134 @@
+/* ##########################
+            table component css
+    ########################## */
+
+.table {
+    width: 100%;
+}
+
+.table-toolbar {
+    border: 1px solid #E7E7E7;
+    background-color: #F8F8F8;
+    padding: 5px;
+}
+
+.table-search {
+    min-width: 150px;
+    max-width: 250px;
+}
+
+.table-search button {
+    height: 30px;
+}
+
+.table-header-text {
+    font-weight: bold;
+    font-size: 16px;
+    color: #444;
+}
+
+.table-header-row {
+    background-color: #cccccc;
+}
+
+.table tr:first-child > th.table-header-cell {
+    border-bottom: 0px;
+    vertical-align: middle;
+    text-transform: capitalize;
+}
+
+.table-footer {
+    border: 1px solid #dddddd;
+    border-top: none;
+    background-color: #f9f9f9;
+    min-height: 35px;
+}
+
+.table-page {
+    padding: 8px;
+    color: #999;
+}
+
+.table-pagination {
+    margin: 0;
+    padding: 2px;
+}
+
+.table-sortable,
+.table-row-hover {
+    cursor: pointer;
+}
+
+.table-sorted-asc span {
+    float: right;
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin: 8px 5px 0 0;
+    border-right: 4px solid transparent;
+    border-left: 4px solid transparent;
+    border-bottom: 4px solid #000000;
+    content: "";
+}
+
+.table-sorted-desc span {
+    float: right;
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin: 8px 5px 0 0;
+    border-top: 4px solid #000000;
+    border-right: 4px solid transparent;
+    border-left: 4px solid transparent;
+    content: "";
+}
+
+.table-row-selected {
+    background-color: #f2f2f2;
+}
+
+.table > tbody > tr.table-row-selected:hover {
+    background-color: #f2f2f2;
+}
+
+.table-row-hovered {
+    //background-color: @table-bg-hover;
+}
+
+.table-text-left-align {
+    text-align: left;
+}
+
+.table-text-right-align {
+    text-align: right;
+}
+
+.table-text-center-align {
+    text-align: center;
+}
+
+.table-nowrap {
+    table-layout: fixed;
+}
+
+.table-nowrap td {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+/* ##########################
+            pagination
+    ########################## */
+
+.pagination > .active > a,
+.pagination > .active > span,
+.pagination > .active > a:hover,
+.pagination > .active > span:hover,
+.pagination > .active > a:focus,
+.pagination > .active > span:focus {
+    color: #ffffff;
+    background-color: @btn-primary-bg;
+    border-color: #b2dfff;
+}

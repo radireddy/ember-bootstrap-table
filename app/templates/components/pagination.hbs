@@ -1,0 +1,9 @@
+
+
+<li class="{{if _hasFirstPage '' 'disabled'}}"><a href="javascript:void(0);" {{action "firstPage" }}>&laquo;</a></li>
+<li class="{{if _hasPrevPage '' 'disabled'}}"><a href="javascript:void(0);" {{action "prevPage" }}>&lsaquo;</a></li>
+{{#each _pages as |page|}}
+    <li class="{{if page.isActive 'active'}}"><a href="javascript:void(0);" {{action "setPage" page }}>{{page.page}}</a></li>
+{{/each}}
+<li class={{if _hasNextPage '' 'disabled'}}><a href="javascript:void(0);" {{action "nextPage" }}>&rsaquo;</a></li>
+<li class={{if _hasLastPage '' 'disabled'}}><a href="javascript:void(0);" {{action "lastPage" }}>&raquo;</a></li>

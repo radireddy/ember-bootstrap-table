@@ -1,0 +1,117 @@
+
+<div style="width: 800px; padding:20px;">
+    <h3> 1. Simple table with pagination</h3>
+  {{#eb-table
+                    rowSelection='none'
+                    pageSize=5
+                    content=users
+                    columns=columns1}}
+    {{/eb-table}}
+</div>
+
+<div style="width: 800px; padding:20px;">
+    <h3> 1.1. Table condensed, stripped, content wraped</h3>
+  {{#eb-table
+                    rowSelection='none'
+                    pageSize=5
+                    content=users
+                    columns=columns1
+                     responsiveTable=true
+                     condensedTable=true
+                     borderedTable=true
+                     nowrapTable=false
+                     tableStriped=true}}
+    {{/eb-table}}
+</div>
+
+<div style="width: 800px; padding:20px;">
+    <h3> 2. Table with navigation bar, filter and pagination</h3>
+  {{#eb-table
+                    rowSelection='none'
+                    pageSize=5
+                    content=users
+                    columns=columns1
+                    filterKey=filterKey}}
+
+        {{#eb-table-navbar}}
+            <button type="button" class="btn btn-primary btn-sm" id="new" {{action 'newButton'}}> New </button>
+            <button type="button" class="btn btn-primary btn-sm" id="delete" {{action 'deleteButton'}}> Delete </button>
+             <div class="table-search input-group pull-right">
+                {{input class="form-control table-search" type='text' value=filterKey placeholder="Filter..." size=40}}
+            </div>
+            <div style="clear:both;"></div>
+        {{/eb-table-navbar}}
+    {{/eb-table}}
+</div>
+
+
+
+<div style="width: 800px; padding:20px;">
+    <h3> 3. Table with default sorting, column sorting and row selection</h3>
+  {{#eb-table
+                    rowSelection='single'
+                    rowSelectionHandler='onRowSelect3'
+                    pageSize=5
+                    content=users
+                    columns=columns3
+                    sortProperties= sortProperties
+                    filterKey=filterKey3}}
+
+        {{#eb-table-navbar}}
+            <button type="button" class="btn btn-primary btn-sm" id="new" {{action 'newButton3'}}> New </button>
+            <button type="button" class="btn btn-primary btn-sm" id="new" disabled={{disableButtons3}}> Edit </button>
+            <button type="button" class="btn btn-primary btn-sm" id="delete" {{action 'deleteButton3'}} disabled={{disableButtons3}}> Delete </button>
+             <div class="table-search input-group pull-right">
+                {{input class="form-control table-search" type='text' value=filterKey3 placeholder="Filter..."}}
+            </div>
+            <div style="clear:both;"></div>
+        {{/eb-table-navbar}}
+    {{/eb-table}}
+</div>
+
+
+
+<div style="width: 800px; padding:20px;">
+    <h3> 4. Customized Table: highlight row </h3>
+  {{#eb-table
+                    rowSelection='single'
+                    rowSelectionHandler='onRowSelect4'
+                    pageSize=5
+                    content=users
+                    columns=columns4
+                    sortProperties= sortProperties
+                    rowComponentName='users.users-table-row'}}
+    {{/eb-table}}
+</div>
+
+
+<div style="width: 800px; padding:20px;">
+    <h3> 5. Customized Table: highlight column cells </h3>
+  {{#eb-table
+                    pageSize=5
+                    content=users
+                    columns=columns5
+                    sortProperties= sortProperties5}}
+    {{/eb-table}}
+</div>
+
+
+<div style="width: 800px; padding:20px;">
+    <h3> 6. Customized Table: customized actions in column </h3>
+  {{#eb-table
+                    pageSize=5
+                    content=users
+                    columns=columns6}}
+    {{/eb-table}}
+</div>
+
+<div style="width: 800px; padding:20px;">
+    <h3> 7. Tale multiple row selection </h3>
+  {{#eb-table
+                    rowSelection='multiple'
+                    rowSelectionHandler='onRowSelect7'
+                    pageSize=5
+                    content=users
+                    columns=columns7}}
+    {{/eb-table}}
+</div>

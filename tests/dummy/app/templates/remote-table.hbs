@@ -1,0 +1,25 @@
+
+<div style="width: 800px; padding:20px;">
+  {{#eb-remote-table
+                    rowSelection='single'
+                    rowSelectionHandler='onRowSelect'
+                    pageSize=5
+                    content=model
+                    columns=columns
+                    sortProperties= sortProperties
+                    filterKey=filterKey
+                    totalRecords=totalUsers
+                    loadingMessage='Loading users ...'
+                    dataFetchHandler='fetchData'}}
+
+        {{#eb-table-navbar}}
+            <button type="button" class="btn btn-primary btn-sm" id="new" {{action 'newButton'}}> New </button>
+            <button type="button" class="btn btn-primary btn-sm" id="delete" {{action 'deleteButton'}}> Delete </button>
+
+             <div class="table-search input-group pull-right">
+                {{input class="form-control table-search" type='text' value=filterKey placeholder="Filter..."}}
+            </div>
+            <div style="clear:both;"></div>
+        {{/eb-table-navbar}}
+    {{/eb-remote-table}}
+</div>
