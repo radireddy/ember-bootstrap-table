@@ -56,11 +56,21 @@ Supports all features of Bootstrap Table with below additional features
 
 * `ember build`
 
+## Looking for help?
+
+If it is a bug please [open an issue on GitHub](/issues).
+
+
 ## Contributing
 
-Interested in contributing to this addon, please contact me on adireddyravindra@gmail.com
+We welcome anyone interested to contribute to this library. We are always looking to improve this library. Please see our [Contribution Guidelines](CONTRIBUTING.md) on how to properly submit issues and pull requests.
+You can also reach me on adireddyravindra@gmail.com if you need any help.
 
 For more information on using ember-cli, visit [http://ember-cli.com/](http://ember-cli.com/).
+
+## Versioning
+
+This library follows [Semantic Versioning](http://semver.org/)
 
 
 # Developer Guide
