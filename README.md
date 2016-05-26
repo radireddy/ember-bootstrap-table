@@ -58,7 +58,7 @@ Supports all features of Bootstrap Table with below additional features
 
 ## Looking for help?
 
-If it is a bug please [open an issue on GitHub](/issues).
+If it is a bug please [open an issue on GitHub](https://github.com/radireddy/ember-bootstrap-table/issues).
 
 
 ## Contributing
@@ -174,20 +174,495 @@ All options mentioned above are applicable along with some additional options me
 | totalRecords | true | 0 | Positive integer, total number of records found in DB. Exact value is required for pagination to work properly. |
 | dataFetchHandler | true | null | JavaScript function, call back function. Table depends on this function to get data. Table calls this method when ever new data is required, on sorting, pagination, filteretc. It passes current page, page size, sort property, sort order and filter key as arguments. |
 
-## Table images
+## Table Examples
+
+### Simple table with pagination
+
+```html
+  {{#eb-table
+                    pageSize=5
+                    content=users
+                    columns=columns}}
+    {{/eb-table}}
+  ```
+
+  ```javascript
+    import Ember from 'ember';
+    import ColumnDefinition from 'ember-bootstrap-table/models/column-definition';
+
+    export default Ember.Controller.extend({
+
+        users: [{firstName: 'James', lastName: 'Carter', age: 30},
+                    {firstName: 'Steven', lastName: 'Smith', age: 35}]
+
+        columns: Ember.computed(function() {
+            var col1 = ColumnDefinition.create({
+                header: 'First Name',
+                contentPath: 'firstName'
+            });
+            var col2 = ColumnDefinition.create({
+                header: 'Last Name',
+                contentPath: 'lastName'
+            });
+            var col3 = ColumnDefinition.create({
+                header: 'Age',
+                contentPath: 'age',
+                textAlign: 'center'
+            });
+            return [col1, col2, col3];
+        })
+    });
+ ```
 
 ![Alt text](/images/simple-table.png?raw=true)
 
-![Alt text](/images/navigationbar.png?raw=true)
+
+### Table with navigation bar,  filter and pagination
+
+  ```html
+    {{#eb-table
+        rowSelection='none'
+        pageSize=5
+        content=users
+        columns=columns
+        filterKey=filterKey}}
+
+        {{#eb-table-navbar}}
+            <button type="button" class="btn btn-primary btn-sm" id="new" {{action 'newButton'}}> New </button>
+            <button type="button" class="btn btn-primary btn-sm" id="delete" {{action 'deleteButton'}}> Delete </button>
+             <div class="table-search input-group pull-right">
+                {{input class="form-control table-search" type='text' value=filterKey placeholder="Filter..." size=40}}
+            </div>
+            <div style="clear:both;"></div>
+        {{/eb-table-navbar}}
+    {{/eb-table}}
+```
+
+```javascript
+    import Ember from 'ember';
+    import ColumnDefinition from 'ember-bootstrap-table/models/column-definition';
+
+    export default Ember.Controller.extend({
+
+        users: [{firstName: 'James', lastName: 'Carter', age: 30},
+                    {firstName: 'Steven', lastName: 'Smith', age: 35}]
+
+        columns: Ember.computed(function() {
+            var col1 = ColumnDefinition.create({
+                header: 'First Name',
+                contentPath: 'firstName',
+                isFilterable: true
+            });
+            var col2 = ColumnDefinition.create({
+                header: 'Last Name',
+                contentPath: 'lastName',
+                isFilterable: true
+            });
+            var col3 = ColumnDefinition.create({
+                header: 'Age',
+                contentPath: 'age',
+                textAlign: 'center',
+                isFilterable: true
+            });
+            return [col1, col2, col3];
+        })
+    });
+ ```
+
+ ![Alt text](/images/navigationbar.png?raw=true)
+
+
+
+ ### Table condensed, stripped and conten wraped
+
+  ```html
+        {{#eb-table
+            rowSelection='none'
+            pageSize=5
+            content=users
+            columns=columns
+            responsiveTable=true
+            condensedTable=true
+            borderedTable=true
+            nowrapTable=false
+            tableStriped=true}}
+    {{/eb-table}}
+```
 
 ![Alt text](/images/table-stripped.png?raw=true)
 
-![Alt text](/images/column-sorting.png?raw=true)
+
+### Table with default sorting, column sorting, filtering and row selection
+
+```
+ {{#eb-table
+        rowSelection='single'
+        rowSelectionHandler='onRowSelect'
+        pageSize=5
+        content=users
+        columns=columns
+        sortProperties= sortProperties
+        filterKey=filterKey}}
+
+        {{#eb-table-navbar}}
+            <button type="button" class="btn btn-primary btn-sm" id="new" {{action 'newButton3'}}> New </button>
+            <button type="button" class="btn btn-primary btn-sm" id="new" disabled={{disableButtons3}}> Edit </button>
+            <button type="button" class="btn btn-primary btn-sm" id="delete" {{action 'deleteButton3'}} disabled={{disableButtons3}}> Delete </button>
+             <div class="table-search input-group pull-right">
+                {{input class="form-control table-search" type='text' value=filterKey placeholder="Filter..."}}
+            </div>
+            <div style="clear:both;"></div>
+        {{/eb-table-navbar}}
+{{/eb-table}}
+```
+
+```javascript
+    import Ember from 'ember';
+    import ColumnDefinition from 'ember-bootstrap-table/models/column-definition';
+
+    export default Ember.Controller.extend({
+
+        sortProperties: ['age:desc'],
+        selectedRow: null,
+
+        users: [{firstName: 'James', lastName: 'Carter', age: 30},
+                    {firstName: 'Steven', lastName: 'Smith', age: 35}]
+
+        columns: Ember.computed(function() {
+            var col1 = ColumnDefinition.create({
+                header: 'First Name',
+                isSortable: true,
+                contentPath: 'firstName',
+                isFilterable: true
+            });
+            var col2 = ColumnDefinition.create({
+                header: 'Last Name',
+                isSortable: true,
+                contentPath: 'lastName',
+                isFilterable: true
+            });
+            var col3 = ColumnDefinition.create({
+                header: 'Age',
+                isSortable: true,
+                contentPath: 'age',
+                textAlign: 'center',
+                isFilterable: true,
+                isSorted: true,
+                sortOrder: 'desc'
+            });
+            return [col1, col2, col3];
+        }),
+        actions:{
+             onRowSelect: function(rows) {
+                this.set('selectedRow', rows[0]);
+            }
+        }
+    });
+ ```
+
+ ![Alt text](/images/column-sorting.png?raw=true)
+
+
+
+### Table with multiple row selection
+
+ ```html
+    {{#eb-table
+        rowSelection='multiple'
+        pageSize=5
+        content=users
+        columns=columns}}
+    {{/eb-table}}
+```
+
+![Alt text](/images/multiple-row-selection.png?raw=true)
+
+
+
+### Customized table, highlight table cells
+
+ ```
+ {{#eb-table
+        pageSize=5
+        content=users
+        columns=columns}}
+{{/eb-table}}
+ ```
+ ```
+import Ember from 'ember';
+import ColumnDefinition from 'ember-bootstrap-table/models/column-definition';
+
+export default Ember.Controller.extend({
+    columns: Ember.computed(function() {
+            var col1 = ColumnDefinition.create({
+                header: 'First Name',
+                contentPath: 'firstName'
+            });
+            var col2 = ColumnDefinition.create({
+                header: 'Last Name',
+                contentPath: 'lastName'
+            });
+            var col3 = ColumnDefinition.create({
+                header: 'Age',
+                contentPath: 'age',
+                textAlign: 'center',
+                columnComponentName: 'users-table-column',
+            });
+            return [col1, col2, col3];
+        }),
+});
+ ```
+ ```
+//users-table-column.js
+import Ember from 'ember';
+import TableColumn from 'ember-bootstrap-table/components/eb-table-column';
+
+export default TableColumn.extend({
+    classNames: ['user-column'], //for all columns
+    classNameBindings: ['isSeniourCitizen:label-danger', 'isSeniourCitizen:text-bold'], //for selected columns
+    isSeniourCitizen: Ember.computed('cellContent', function(){
+        return this.get('cellContent') > 60 ? true : false;
+    })
+});
+ ```
 
 ![Alt text](/images/column-hilight.png?raw=true)
 
+
+### Customized table, actions in table cells
+
+```
+ {{#eb-table
+        pageSize=5
+        content=users
+        columns=columns}}
+{{/eb-table}}
+ ```
+ ```
+import Ember from 'ember';
+import ColumnDefinition from 'ember-bootstrap-table/models/column-definition';
+
+export default Ember.Controller.extend({
+    columns: Ember.computed(function() {
+        var col1 = ColumnDefinition.create({
+            header: 'First Name',
+            isSortable: true,
+            contentPath: 'firstName'
+        });
+        var col2 = ColumnDefinition.create({
+            header: 'Last Name',
+            isSortable: true,
+            contentPath: 'lastName'
+        });
+        var col3 = ColumnDefinition.create({
+            header: 'Age',
+            isSortable: true,
+            contentPath: 'age',
+            textAlign: 'center',
+            isFilterable: false
+        });
+        var col4 = ColumnDefinition.create({
+            header: 'Action',
+            isSortable: false,
+            contentPath: '',
+            textAlign: 'center',
+            isFilterable: false,
+            columnComponentName: 'users-table-delete-column',
+        });
+        return [col1, col2, col3, col4];
+    }),
+
+    actions:{
+        deleteRow: function(row){
+            //model.removeObject(row);
+        }
+    }
+});
+ ```
+ ```
+//users-table-delete-column.js
+import Ember from 'ember';
+import VcaTableColumn from 'ember-bootstrap-table/components/eb-table-column';
+const { getOwner } = Ember;
+
+export default VcaTableColumn.extend({
+    layout: Ember.HTMLBars.compile('<button type="button" class="btn btn-primary btn-sm" id="delete" {{action "deleteRow" row target="controller"}}> Delete </button>'),
+    actions: {
+        deleteRow: function(row) {
+            console.log(row);
+            getOwner(this).lookup('controller:table').send('deleteUser', row);
+        }
+    }
+});
+ ```
+
 ![Alt text](/images/cell-actions.png?raw=true)
+
+
+### Customized table, row highlight
+
+```
+ {{#eb-table
+        pageSize=5
+        content=users
+        columns=columns
+        rowComponentName='users-table-row'}}
+{{/eb-table}}
+ ```
+ ```
+import Ember from 'ember';
+import ColumnDefinition from 'ember-bootstrap-table/models/column-definition';
+
+export default Ember.Controller.extend({
+    columns: Ember.computed(function() {
+        var col1 = ColumnDefinition.create({
+            header: 'First Name',
+            contentPath: 'firstName'
+        });
+        var col2 = ColumnDefinition.create({
+            header: 'Last Name',
+            contentPath: 'lastName'
+        });
+        var col3 = ColumnDefinition.create({
+            header: 'Age',
+            contentPath: 'age',
+            textAlign: 'center'
+        });
+        return [col1, col2, col3];
+    })
+});
+ ```
+ ```
+//users-table-row.js
+import Ember from 'ember';
+import VcaTableRow from 'ember-bootstrap-table/components/eb-table-row';
+
+export default VcaTableRow.extend({
+    classNames: ['user-row'], //for all rows
+    classNameBindings: ['isSeniourCitizen:label-danger', 'isSeniourCitizen:text-bold'], //for selected rows
+
+    isSeniourCitizen: Ember.computed('row', function(){
+        return this.get('row.age') > 60 ? true : false;
+    })
+
+});
+ ```
 
 ![Alt text](/images/row-hilight.png?raw=true)
 
-![Alt text](/images/multiple-row-selection.png?raw=true)
+
+
+### Server side pagination, sorting and filtering
+
+```
+ {{#eb-remote-table
+        rowSelection='single'
+        rowSelectionHandler='onRowSelect'
+        pageSize=5
+        content=model
+        columns=columns
+        sortProperties= sortProperties
+        filterKey=filterKey
+        totalRecords=totalUsers
+        loadingMessage='Loading users ...'
+        dataFetchHandler='fetchData'}}
+
+        {{#eb-table-navbar}}
+            <button type="button" class="btn btn-primary btn-sm" id="new" {{action 'newButton'}}> New </button>
+            <button type="button" class="btn btn-primary btn-sm" id="delete" {{action 'deleteButton'}}> Delete </button>
+             <div class="table-search input-group pull-right">
+                {{input class="form-control table-search" type='text' value=filterKey placeholder="Filter..."}}
+            </div>
+            <div style="clear:both;"></div>
+        {{/eb-table-navbar}}
+{{/eb-remote-table}}
+ ```
+ ```
+import Ember from 'ember';
+import ColumnDefinition from 'ember-bootstrap-table/models/column-definition';
+
+export default Ember.Controller.extend({
+    sortProperties: ['firstName:desc'],
+    totalUsers: 0,
+    columns: Ember.computed(function() {
+        var col1 = ColumnDefinition.create({
+            header: 'First Name',
+            isSortable: true,
+            contentPath: 'firstName',
+            isSorted: true,
+            sortOrder: 'desc'
+        });
+        var col2 = ColumnDefinition.create({
+            header: 'Last Name',
+            isSortable: true,
+            contentPath: 'lastName'
+        });
+        var col3 = ColumnDefinition.create({
+            header: 'Age',
+            isSortable: true,
+            contentPath: 'age',
+            textAlign: 'center',
+            hide: false,
+            isFilterable: true
+        });
+        return [col1, col2, col3];
+    }),
+    actions: {
+        onRowSelect: function(rows) {
+            //alert(rows.length + ' row selected');
+        },
+        newButton: function() {
+            alert('new');
+        },
+        deleteButton: function() {
+            alert('delete');
+        }
+    }
+});
+ ```
+ ```
+import Ember from 'ember';
+export default Ember.Route.extend({
+
+    model: function() {
+        return Ember.A();
+    },
+
+    getUsers: function() {
+        var controller = this.controllerFor(this.routeName);
+        var users = Ember.A();
+        var self = this;
+        var sortOrder = this.get('sortAsc') ? 'asc' : 'desc';
+        var promise = new Ember.RSVP.Promise(function(resolve, reject) {
+            Ember.$.ajax({
+                type: 'GET',
+                url: '/api/remote-table?pageNum=' + self.get('pageNum') + '&pageSize=' + self.get('pageSize') + '&sortBy=' + self.get('sortBy') + '&sortOrder=' + sortOrder,
+                headers: {
+                    'Accept': 'application/json; charset=utf-8'
+                }
+            }).done(function(resp) {
+                var urs = resp.users;
+                controller.set('totalUsers', resp.count);
+                for (var i = 0; i < urs.length; i++) {
+                    users.pushObject(urs[i]);
+                }
+                resolve(users);
+            }).fail(function() {
+                reject(users);
+            });
+        });
+        return promise;
+    },
+
+    actions: {
+        fetchData: function(pageNum, pageSize, sortBy, sortAsc) {
+            var controller = this.controllerFor(this.routeName);
+            this.set('pageNum', pageNum);
+            this.set('pageSize', pageSize);
+            this.set('sortBy', sortBy);
+            this.set('sortAsc', sortAsc);
+            controller.set('model', this.getUsers());
+        }
+    }
+});
+ ```
