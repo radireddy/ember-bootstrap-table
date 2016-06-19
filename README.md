@@ -1,21 +1,21 @@
 # Ember-bootstrap-table
 
 Table component built using Ember 2.5. It is built as ember component and available as ember-cli addon.
-It support both in memory operations and server side operations to support large data. it also allows you to handle very large data by only rendering the rows that are being displayed.
+It supports both in memory operations and server side operations to support large data. It also allows you to handle very large data by only rendering the rows that are being displayed.
 
 ### Supported features
 
-Supports all features of Bootstrap Table with below additional features
+Supports all features of Bootstrap Table with the additional features below
 
-* Column sorting, both ascending and decending.
-* Default column sorting, sort table by a column when table is rendered
-* Free text filter, can be extended to add customised filter
-* Default filter is supported, filters table rows by default key when table is rendered
-* Navigation buttons, rendered using block content and  hence can be customizable as needed
-* Row selection, single and multiple
-* Pagination, page size is configurable
-* Customizable as needed like to add action buttons in column cells, to highlight a row or a cell
-* Server side pagination, sorting and filtering
+* Column sorting, both ascending and descending.
+* Default column sorting, sort table by a column when table is rendered.
+* Free text filter, can be extended to add customised filter.
+* Default filter is supported, filters table rows by a default key when the table is rendered.
+* Navigation buttons, rendered using block content and hence can be customizable as needed.
+* Row selection, single and multiple.
+* Pagination, page size is configurable.
+* Customizable as needed (e.g. add action buttons in column cells, highlight a rows or cells).
+* Server side pagination, sorting and filtering.
 
 ## Dependencies
 
@@ -32,7 +32,7 @@ Supports all features of Bootstrap Table with below additional features
     ```javascript
     app.import('bower_components/ember/ember-template-compiler.js');
     ```
-* install bootstrap if you not yet installed `bower install bootstrap --save`
+* install bootstrap if you haven't already installed it: `bower install bootstrap --save`
 
 ## Developing or setting up this project on your computer
 
@@ -46,7 +46,7 @@ Supports all features of Bootstrap Table with below additional features
 * `ember server`
 * Visit your app at http://localhost:4200.
 
-## Running Tests (no test cases added as of now)
+## Running Tests (no test cases added yet)
 
 * `npm test` (Runs `ember try:testall` to test your addon against multiple Ember versions)
 * `ember test`
@@ -77,8 +77,8 @@ This library follows [Semantic Versioning](http://semver.org/)
 
 ## Usage
 
-To create simple table, do following,
- * In your template use component as below
+To create simple table, do the following:
+ * In your template use the component as below
 
     ```html
        {{#eb-table
@@ -88,7 +88,7 @@ To create simple table, do following,
         {{/eb-table}}
     ```
 
-* In your controller define columns and users array as below
+* In your controller define the columns and users arrays as below
 
     ```javascript
     import Ember from 'ember';
@@ -183,7 +183,7 @@ All options mentioned above are applicable along with some additional options me
                     pageSize=5
                     content=users
                     columns=columns}}
-    {{/eb-table}}
+  {{/eb-table}}
   ```
 
   ```javascript
