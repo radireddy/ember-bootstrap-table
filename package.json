@@ -1,6 +1,6 @@
 {
   "name": "ember-bootstrap-table",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Ember component for bootstrap table with sorting, filtering, pagination and row selection ",
   "directories": {
     "doc": "doc",
