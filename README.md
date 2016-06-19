@@ -147,6 +147,7 @@ To create simple table, do the following:
 | nowrapTable | false | true | Boolean, if true adds bootstrap 'table-nowrap' class to table. If falsewraps cell content if it exceds available width. |
 | tableStriped | false | false | Boolean, if true adds bootstrap 'table-striped' class to table. Adds zebra-striping to table rows. For more info http://getbootstrap.com/css/#tables-striped |
 | rowComponentName | false | eb-table-row | String, table row component name. If you need to customize table row (for ex: if you need to highlight row on certain condition), extend eb-table-row  to add your own extension logic and then provide extended component name through this property. |
+| showFooter | false | false | Boolean. If set to true,  pagination won't be shown. If this is set to true then you also need to set 'pageSize' to total number of records or to very large size so that table displays all rows.|
 
 ## Column Options
 
@@ -163,7 +164,7 @@ Column options are passed to table as an array of 'column-definition' model. Eac
 | isSorted | false | false | Boolean, used to indicate  default column sort on table column header. If true sort order icon appears on table column header. Use table 'sortProperties' option to enable default sort.|
 | sortOrder | false | 'asc' | String, used to indicate  default column sort order on table column header. Up or down  icon appears on table column header. Use table 'sortProperties' option to enable default sort.|
 | columnComponentName | false | eb-table-column | String, table column component name. If you need to customize table column (for ex: if you need to highlight column cell on certain condition), extend eb-table-column  to add your own extension logic and then provide extended component name through this property. |
-| hide | false | false | Boolean, if true, hids column from table. This can be used if u dont want to show column on table but need to filter rows based on this column. |
+| hide | false | false | Boolean. If true, hids column from table. This can be used if u dont want to show column on table but need to filter rows based on this column. |
 
 ## Remote Table Options
 
