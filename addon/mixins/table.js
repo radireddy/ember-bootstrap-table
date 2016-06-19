@@ -23,6 +23,7 @@ export default Ember.Mixin.create({
     nowrapTable: true,
     tableStriped: false,
     rowSelectionHandler: null,
+    showFooter: true,
 
     layout: Ember.computed(function() {
         return Ember.HTMLBars.compile('{{yield}}{{#eb-table-content}}{{eb-table-header}}{{eb-table-body}}{{eb-table-footer}}{{/eb-table-content}}');
@@ -92,6 +93,18 @@ export default Ember.Mixin.create({
 
     willDestroyElement: function() {
 
+    },
+
+    init(){
+      this._super();
+
+      let showFooter = get(this, 'showFooter');
+      if (!showFooter){
+          let layout = Ember.computed(function() {
+          return Ember.HTMLBars.compile('{{yield}}{{#eb-table-content}}{{eb-table-header}}{{eb-table-body}}{{!eb-table-footer}}{{/eb-table-content}}');
+      });
+      set(this, 'layout', layout);
+      }
     }
 
 });
